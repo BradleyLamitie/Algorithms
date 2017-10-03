@@ -1,0 +1,63 @@
+package Assignment3;
+
+
+public class Problem7 {
+
+	
+	public static boolean compare(int a, int b)
+	{
+		// A new comparision function
+		// Return true if a is greater than b, false otherwise
+		// We claim a is greater than b, if ab is greater than ba
+		// In this new comparision function, we compare numbers not by numbers themselves
+		// We compare numbers by numbers they can form
+		String ab =  String.valueOf(a) +  String.valueOf(b);
+		
+		
+		String ba = String.valueOf(b) +  String.valueOf(a);
+		
+		
+		int realab = Integer.parseInt(ab);
+		
+		int realba = Integer.parseInt(ba);
+		
+		if(realab > realba)
+		{
+			return true; 
+		}
+		else
+		{
+			return false;
+		}
+	
+	}
+	
+	
+	
+	public static String largestnumber(int[] a)
+	{
+		// Input: A list of non-negative integers.
+		// Output: Arrange integers such that they form the largest number. 
+		// For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+		// Note: The result may be very large, so you need to return a string instead of an integer.
+		return "hey";
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method
+		int[] givenarray = {3, 30, 34, 5, 9};
+		
+		String result = largestnumber(givenarray);
+		
+		// Test the largestnumber method
+		System.out.println("The largest number that the given array can form is "+ result);
+		
+		
+		
+	}
+
+}

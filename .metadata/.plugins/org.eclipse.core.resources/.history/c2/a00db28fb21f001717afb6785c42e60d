@@ -1,0 +1,93 @@
+package Assignment3;
+
+import java.util.Arrays;
+
+public class Problem7 {
+
+	
+	public static boolean compare(int a, int b)
+	{
+		// A new comparision function
+		// Return true if a is greater than b, false otherwise
+		// We claim a is greater than b, if ab is greater than ba
+		// In this new comparision function, we compare numbers not by numbers themselves
+		// We compare numbers by numbers they can form
+		String ab =  String.valueOf(a) +  String.valueOf(b);
+		
+		
+		String ba = String.valueOf(b) +  String.valueOf(a);
+		
+		
+		int realab = Integer.parseInt(ab);
+		
+		int realba = Integer.parseInt(ba);
+		
+		if(realab > realba)
+		{
+			return true; 
+		}
+		else
+		{
+			return false;
+		}
+	
+	}
+	
+	
+	
+	public static String largestnumber(int[] a)
+	{
+		// Input: A list of non-negative integers.
+		// Output: Arrange integers such that they form the largest number. 
+		// For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+		// Note: The result may be very large, so you need to return a string instead of an integer.
+		int n = a.length;
+		mergeSort(a);
+		String number = "";
+		for(int i =0; i< n; i++){
+			number += a[i];
+		}
+		return number;
+	}
+	public static void mergeSort(int[] a){
+		int n = a.length;
+		int[] left = Arrays.copyOfRange(a, 0, n/2);
+		int[] right = Arrays.copyOfRange(a, n/2, n);
+		
+		mergeSort(left);
+		mergeSort(right);
+		
+		merge(a,left, right);
+		
+		
+	}
+	
+	public static void merge( int[] result, int[] right, int[] left){
+		int i1 = 0;
+		int i2 = 0;
+		for(int i=0; i<result.length; i++){
+			if(i1<left.length&& compare(left[i1], right[i2]) || i2 >= right.length){
+				result[i] = left[i1];
+				i1++;
+			}else{
+				result[i] = right[i2];
+				i2++;
+			}
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method
+		int[] givenarray = {3, 30, 34, 5, 9};
+		
+		String result = largestnumber(givenarray);
+		
+		// Test the largestnumber method
+		System.out.println("The largest number that the given array can form is "+ result);
+		
+		
+		
+	}
+
+}
